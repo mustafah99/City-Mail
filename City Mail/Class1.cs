@@ -32,3 +32,4 @@ namespace City_Mail
         public string destination { get; set; }
     }
 }
+

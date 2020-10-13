@@ -71,11 +71,12 @@ namespace City_Mail
 
             List<senderDestination> allSenders = new List<senderDestination>();
 
-            Quadcopter quadcopterVehicle = new Quadcopter();
+            //senderDestination senderdestination = new senderDestination();
 
-            Car vehicle = new Car();
+            //Quadcopter quadcopterVehicle = new Quadcopter();
 
-            senderDestination senderdestination = new senderDestination();
+            //Car vehicle = new Car();
+
 
             do
             {
@@ -130,10 +131,10 @@ namespace City_Mail
 
                                         bool invalidCarCredentials = true;
 
-                                        vehicle = new Car();
-
                                         do
                                         {
+                                            Car vehicle = new Car();
+
                                             Write("ID: ");
                                             vehicle.ID = ReadLine();
 
@@ -197,6 +198,8 @@ namespace City_Mail
 
                                         do
                                         {
+                                            Quadcopter quadcopterVehicle = new Quadcopter();
+
                                             Write("ID: ");
                                             quadcopterVehicle.ID = ReadLine();
 
@@ -275,23 +278,20 @@ namespace City_Mail
                                     Clear();
 
                                     Write("Search for Car by ID: ");
+
                                     string searchForCar = ReadLine();
 
-                                    if (vehicle.ID == searchForCar)
+                                    foreach (var veh in allCars)
                                     {
-                                        foreach (var veh in allCars)
+                                        if (veh.ID == searchForCar)
                                         {
                                             WriteLine("Value found.");
                                             // write here all the information you want to display.
-                                            WriteLine($"ID: {vehicle.ID}");
-                                            WriteLine($"Capacity (kg): {vehicle.capacityKg}");
-                                            WriteLine($"Reach (km): {vehicle.reachKm}");
-                                            WriteLine($"Registration number: {vehicle.registrationNumber}");
+                                            WriteLine($"ID: {veh.ID}");
+                                            WriteLine($"Capacity (kg): {veh.capacityKg}");
+                                            WriteLine($"Reach (km): {veh.reachKm}");
+                                            WriteLine($"Registration number: {veh.registrationNumber}"); ;
                                         }
-                                    }
-                                    else
-                                    {
-                                        WriteLine("Unit not found");
                                     }
 
                                     ReadKey(true);
@@ -305,22 +305,20 @@ namespace City_Mail
                                     Clear();
 
                                     Write("Search for Quadcopter by ID: ");
+
                                     string searchForQuadcopter = ReadLine();
-
-                                    if (quadcopterVehicle.ID == searchForQuadcopter)
+                                    
+                                    foreach (var quad in allQuadcopters)
                                     {
-                                        Clear();
-
-                                        WriteLine("Value found.");
-                                        // write here all the information you want to display.
-                                        WriteLine($"ID: {quadcopterVehicle.ID}");
-                                        WriteLine($"Capacity (kg): {quadcopterVehicle.capacityKg}");
-                                        WriteLine($"Reach (km): {quadcopterVehicle.reachKm}");
-                                        WriteLine($"Transponder ID: {quadcopterVehicle.transponderID}");
-                                    }
-                                    else
-                                    {
-                                        WriteLine("Unit not found");
+                                        if (quad.ID == searchForQuadcopter)
+                                        {
+                                            WriteLine("Value found.");
+                                            // write here all the information you want to display.
+                                            WriteLine($"ID: {quad.ID}");
+                                            WriteLine($"Capacity (kg): {quad.capacityKg}");
+                                            WriteLine($"Reach (km): {quad.reachKm}");
+                                            WriteLine($"Transponder ID: {quad.transponderID}");
+                                        }
                                     }
 
                                     ReadKey(true);
@@ -346,10 +344,10 @@ namespace City_Mail
 
                         bool registeringSenderAndDestination = true;
 
-                        senderdestination = new senderDestination();
-
                         do
                         {
+                            senderDestination senderdestination = new senderDestination();
+
                             Write("Sender: ");
                             senderdestination.senderName = ReadLine();
 
@@ -412,7 +410,7 @@ namespace City_Mail
                         foreach (var sender in allSenders)
                         {
                             // write here all the information you want to display.
-                            WriteLine($"{id++}     {senderdestination.destination}");
+                            WriteLine($"{id++}     {sender.destination}");
                         }
 
                         ReadKey(true);
