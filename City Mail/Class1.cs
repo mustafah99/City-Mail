@@ -16,11 +16,21 @@ namespace City_Mail
         public string reachKm { get; set; }
 
         public string registrationNumber { get; set; }
+
+        public virtual void vehicleDeliveryForm()
+        {
+            WriteLine("The car delivers on wheel.");
+        }
     }
 
     public class Quadcopter : Car
     {
         public string transponderID { get; set; }
+
+        public override void vehicleDeliveryForm()
+        {
+            WriteLine("The quadcopter delivers on air.");
+        }
     }
 
     public class senderDestination
@@ -30,10 +40,10 @@ namespace City_Mail
 
         public string deliveryStatus;
 
-        public senderDestination(string status)
-        {
-            deliveryStatus = status;
-        }
+        //public senderDestination(string status)
+        //{
+        //    deliveryStatus = status;
+        //}
     }
 }
 

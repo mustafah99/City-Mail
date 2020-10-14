@@ -290,7 +290,8 @@ namespace City_Mail
                                             WriteLine($"ID: {veh.ID}");
                                             WriteLine($"Capacity (kg): {veh.capacityKg}");
                                             WriteLine($"Reach (km): {veh.reachKm}");
-                                            WriteLine($"Registration number: {veh.registrationNumber}"); ;
+                                            WriteLine($"Registration number: {veh.registrationNumber}");
+                                            veh.vehicleDeliveryForm();
                                         }
                                         else if (veh.ID != searchForCar)
                                         {
@@ -326,6 +327,7 @@ namespace City_Mail
                                             WriteLine($"Capacity (kg): {quad.capacityKg}");
                                             WriteLine($"Reach (km): {quad.reachKm}");
                                             WriteLine($"Transponder ID: {quad.transponderID}");
+                                            quad.vehicleDeliveryForm();
                                         }
                                         else if (quad.ID != searchForQuadcopter)
                                         {
