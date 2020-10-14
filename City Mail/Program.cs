@@ -292,6 +292,14 @@ namespace City_Mail
                                             WriteLine($"Reach (km): {veh.reachKm}");
                                             WriteLine($"Registration number: {veh.registrationNumber}"); ;
                                         }
+                                        else if (veh.ID != searchForCar)
+                                        {
+                                            WriteLine("Unit not found.");
+                                        }
+                                        else
+                                        {
+                                            WriteLine("Unit not found.");
+                                        }
                                     }
 
                                     ReadKey(true);
@@ -307,7 +315,7 @@ namespace City_Mail
                                     Write("Search for Quadcopter by ID: ");
 
                                     string searchForQuadcopter = ReadLine();
-                                    
+
                                     foreach (var quad in allQuadcopters)
                                     {
                                         if (quad.ID == searchForQuadcopter)
@@ -318,6 +326,14 @@ namespace City_Mail
                                             WriteLine($"Capacity (kg): {quad.capacityKg}");
                                             WriteLine($"Reach (km): {quad.reachKm}");
                                             WriteLine($"Transponder ID: {quad.transponderID}");
+                                        }
+                                        else if (quad.ID != searchForQuadcopter)
+                                        {
+                                            WriteLine("Unit not found.");
+                                        }
+                                        else
+                                        {
+                                            WriteLine("Unit not found.");
                                         }
                                     }
 
@@ -402,7 +418,7 @@ namespace City_Mail
 
                         int id = 1;
 
-                        WriteLine("ID    Destination                       Status");
+                        WriteLine("ID    Destination                        Status");
 
                         WriteLine("------------------------------------------------------------------");
 
@@ -410,7 +426,7 @@ namespace City_Mail
                         foreach (var sender in allSenders)
                         {
                             // write here all the information you want to display.
-                            WriteLine($"{id++}     {sender.destination}");
+                            WriteLine($"{id++}     {sender.destination, -14}                     {sender.deliveryStatus}");
                         }
 
                         ReadKey(true);

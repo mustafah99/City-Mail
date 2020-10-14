@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Mail;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using static System.Console;
 
 namespace City_Mail
 {
@@ -15,14 +18,8 @@ namespace City_Mail
         public string registrationNumber { get; set; }
     }
 
-    public class Quadcopter
+    public class Quadcopter : Car
     {
-        public string ID { get; set; }
-
-        public string capacityKg { get; set; }
-
-        public string reachKm { get; set; }
-
         public string transponderID { get; set; }
     }
 
@@ -30,6 +27,13 @@ namespace City_Mail
     {
         public string senderName { get; set; }
         public string destination { get; set; }
+
+        public string deliveryStatus;
+
+        public senderDestination(string status)
+        {
+            deliveryStatus = status;
+        }
     }
 }
 
