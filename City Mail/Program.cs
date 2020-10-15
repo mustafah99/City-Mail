@@ -293,14 +293,6 @@ namespace City_Mail
                                             WriteLine($"Registration number: {veh.registrationNumber}");
                                             veh.vehicleDeliveryForm();
                                         }
-                                        else if (veh.ID != searchForCar)
-                                        {
-                                            WriteLine("Unit not found.");
-                                        }
-                                        else
-                                        {
-                                            WriteLine("Unit not found.");
-                                        }
                                     }
 
                                     ReadKey(true);
@@ -328,14 +320,6 @@ namespace City_Mail
                                             WriteLine($"Reach (km): {quad.reachKm}");
                                             WriteLine($"Transponder ID: {quad.transponderID}");
                                             quad.vehicleDeliveryForm();
-                                        }
-                                        else if (quad.ID != searchForQuadcopter)
-                                        {
-                                            WriteLine("Unit not found.");
-                                        }
-                                        else
-                                        {
-                                            WriteLine("Unit not found.");
                                         }
                                     }
 
@@ -428,7 +412,7 @@ namespace City_Mail
                         foreach (var sender in allSenders)
                         {
                             // write here all the information you want to display.
-                            WriteLine($"{id++}     {sender.destination, -14}                     {sender.deliveryStatus}");
+                            WriteLine($"{id++}     {sender.destination,-14}                     {sender.Status}");
                         }
 
                         ReadKey(true);
@@ -439,9 +423,26 @@ namespace City_Mail
                     case ConsoleKey.D4:
                         Clear();
 
+                        int ids = 1;
+
                         WriteLine("Starting delivery on pending packages...");
 
-                        Thread.Sleep(2000);
+                        WriteLine("------------------------------------------------------------------");
+
+                        WriteLine("ID    Destination                        Status");
+
+                        WriteLine("------------------------------------------------------------------");
+
+                        foreach (var sender in allSenders)
+                        {
+                            sender.Status = SenderStatus.Delivering;
+                            WriteLine($"{ids++}     {sender.destination,-14}                     {sender.Status}");
+                            sender.Status = SenderStatus.Delivered;
+                        }
+
+                        Thread.Sleep(4000);
+
+                        
 
                         Clear();
 

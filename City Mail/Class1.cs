@@ -37,13 +37,20 @@ namespace City_Mail
     {
         public string senderName { get; set; }
         public string destination { get; set; }
+        public SenderStatus Status { get; set; }
 
-        public string deliveryStatus;
+        public senderDestination()
+        {
+            Status = SenderStatus.Pending;
+        }
+    }
 
-        //public senderDestination(string status)
-        //{
-        //    deliveryStatus = status;
-        //}
+    public enum SenderStatus
+    {
+        Delivered = 1,
+        Pending = 2,
+        Delivering = 3
+
     }
 }
 
