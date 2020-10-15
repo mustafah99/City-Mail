@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using static System.Console;
 
@@ -281,18 +282,21 @@ namespace City_Mail
 
                                     string searchForCar = ReadLine();
 
-                                    foreach (var veh in allCars)
+                                    var c = allCars.FirstOrDefault(cars => cars.ID == searchForCar);
+
+                                    if (c == null)
                                     {
-                                        if (veh.ID == searchForCar)
-                                        {
-                                            WriteLine("Value found.");
-                                            // write here all the information you want to display.
-                                            WriteLine($"ID: {veh.ID}");
-                                            WriteLine($"Capacity (kg): {veh.capacityKg}");
-                                            WriteLine($"Reach (km): {veh.reachKm}");
-                                            WriteLine($"Registration number: {veh.registrationNumber}");
-                                            veh.vehicleDeliveryForm();
-                                        }
+                                        WriteLine("Unit not found");
+                                    }
+                                    else
+                                    {
+                                        WriteLine("Value found.");
+                                        // write here all the information you want to display.
+                                        WriteLine($"ID: {c.ID}");
+                                        WriteLine($"Capacity (kg): {c.capacityKg}");
+                                        WriteLine($"Reach (km): {c.reachKm}");
+                                        WriteLine($"Transponder ID: {c.registrationNumber}");
+                                        c.vehicleDeliveryForm();
                                     }
 
                                     ReadKey(true);
@@ -309,18 +313,21 @@ namespace City_Mail
 
                                     string searchForQuadcopter = ReadLine();
 
-                                    foreach (var quad in allQuadcopters)
+                                    var c = allQuadcopters.FirstOrDefault(quad => quad.ID == searchForQuadcopter);
+
+                                    if (c == null)
                                     {
-                                        if (quad.ID == searchForQuadcopter)
-                                        {
-                                            WriteLine("Value found.");
-                                            // write here all the information you want to display.
-                                            WriteLine($"ID: {quad.ID}");
-                                            WriteLine($"Capacity (kg): {quad.capacityKg}");
-                                            WriteLine($"Reach (km): {quad.reachKm}");
-                                            WriteLine($"Transponder ID: {quad.transponderID}");
-                                            quad.vehicleDeliveryForm();
-                                        }
+                                        WriteLine("Unit not found");
+                                    }
+                                    else
+                                    {
+                                        WriteLine("Value found.");
+                                        // write here all the information you want to display.
+                                        WriteLine($"ID: {c.ID}");
+                                        WriteLine($"Capacity (kg): {c.capacityKg}");
+                                        WriteLine($"Reach (km): {c.reachKm}");
+                                        WriteLine($"Transponder ID: {c.transponderID}");
+                                        c.vehicleDeliveryForm();
                                     }
 
                                     ReadKey(true);
@@ -442,7 +449,7 @@ namespace City_Mail
 
                         Thread.Sleep(4000);
 
-                        
+
 
                         Clear();
 
